@@ -4,7 +4,7 @@ var layer;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
-    minZoom: 5,
+    minZoom: 7,
     center: {lat: 38.9072, lng: -77.0369},
     mapTypeId: 'roadmap',
     scaleControl: true
@@ -15,29 +15,31 @@ function initMap() {
       from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al'
     },
     styles: [{
-      where: 'Rent > 1842',
       polygonOptions: {
-        fillColor: '#FF0000'
+        fillColor: '#00FF00',
+        strokeColor: '#000000',
+        strokeOpacity: 0.1,
+        fillOpacity: 0.2
       }
     }, {
-      where: 'Rent > 1411',
+      where: "'Rent' > 988",
       polygonOptions: {
-        fillColor: '#FFA500'
+        fillColor: '#adff2f'
       }
     }, {
-      where: 'Rent > 1193',
+      where: "'Rent' > 1193",
       polygonOptions: {
         fillColor: '#FFFF00'
       }
     }, {
-      where: 'Rent > 988',
+      where: "'Rent' > 1411",
       polygonOptions: {
-        fillColor: '#32CD32'
+        fillColor: '#FFA500'
       }
     }, {
-      where: 'Rent > 495',
+      where: "'Rent' > 1842",
       polygonOptions: {
-        fillColor: '#00FF00'
+        fillColor: '#FF0000'
       }
     }]
   });
