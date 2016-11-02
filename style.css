@@ -1,11 +1,17 @@
-#wrapper{
-  position: fixed;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 #map {
   height: 90vh;
-  position: fixed;
-  top: 56px;
-  left: 300px;
+  width: 80vw;
+  margin-top: 10vh;
+}
+.console {
+  height: 90vh;
+  width: 20vw;
+  margin-top: 10vh;
 }
 /* Optional: Makes the sample page fill the window. */
 html, body {

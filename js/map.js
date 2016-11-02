@@ -155,5 +155,3 @@ function initMap() {
   }
   initAutocomplete()
 }
-
-initMap()
