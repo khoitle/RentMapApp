@@ -9,6 +9,7 @@ function initMap() {
     mapTypeId: 'roadmap',
     scaleControl: true
   });
+  console.log("Angular Init Map")
   var layer = new google.maps.FusionTablesLayer({
     query: {
       select: 'geometry',
