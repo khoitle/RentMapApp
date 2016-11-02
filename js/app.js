@@ -1,6 +1,7 @@
 angular
   .module("rentApp", [
-    "ui.router"
+    "ui.router",
+    "ngResource"
   ])
   .config([
     "$stateProvider",
@@ -13,8 +14,19 @@ angular
     MapControllerFunction
   ])
   .controller("FavoritesController", [
+    "FavoriteFactory",
     FavoritesControllerFunction
   ])
+  .factory("FavoriteFactory", [
+    "$resource",
+    FavoriteFactoryFunction
+  ])
+
+function FavoriteFactoryFunction($resource) {
+  return $resource("http://localhost:3000/places/:zip.json")
+}
+
+
 
 function HomeControllerFunction(){
 
@@ -25,8 +37,8 @@ function MapControllerFunction(){
     console.log('fire')
   })
 }
-function FavoritesControllerFunction(){
-
+function FavoritesControllerFunction( FavoriteFactory ){
+  this.favorites = FavoriteFactory.query();
 }
 
 function Router($stateProvider){

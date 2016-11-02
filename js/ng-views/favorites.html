@@ -6,8 +6,10 @@
     <li><a href="" ng-click="myPlaces = !myPlaces">| Information</a></li>
   </ul>
 </nav>
-<div class="favoritesPage">
-  <div class="savedPlaces">test</div>
+<div class="favorites-page">
+  <div class="saved-place" ng-repeat="favorite in vm.favorites">
+    {{favorite.name}}
+  </div>
 
 
 

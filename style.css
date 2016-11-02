@@ -61,15 +61,16 @@ html, body {
 #target {
   width: 345px;
 }
-.favoritesPage{
+.favorites-page{
   position: fixed;
   display: flex;
   border: 1px solid red;
   height: 90vh;
   width: 700px;
   left: 260px;
+  padding-top: 10vh;
 }
-.savedPlaces{
+.saved-place{
   height: 50px;
   width: 700px;
   border: 1px solid red;
