@@ -1,6 +1,6 @@
 var map;
-var regions;
 var layer;
+var selectedZIPLayer;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
@@ -43,7 +43,46 @@ function initMap() {
       }
     }]
   });
+  console.log(layer)
   layer.setMap(map);
+  layer.enableMapTips({
+                select: "'ZIP','Rent'", // list of columns to query, typially need only one column.
+                from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al', // fusion table name
+                geometryColumn: 'geometry', // geometry column name
+                suppressMapTips: true, // optional, whether to show map tips. default false
+                delay: 100, // milliseconds mouse pause before send a server query. default 300.
+                tolerance: 8, // tolerance in pixel around mouse. default is 6.
+                googleApiKey: 'AIzaSyBNYErfLDCAvSnyYNvLIVMQWo45_L6zE1E'
+              });
+
+	//here's the pseudo-hover
+	google.maps.event.addListener(layer, 'mouseover', function(fEvent) {
+    var ZIPVal = fEvent.row['ZIP'].value;
+    console.log(ZIPVal)
+    selectedZIPLayer = new google.maps.FusionTablesLayer({
+      query: {
+        select: 'geometry',
+        from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al'
+      },
+      styles: [{
+        polygonOptions: {
+          fillColor: '#FF0000',
+          strokeColor: '#000000',
+          strokeOpacity: 0.9,
+          fillOpacity: 0.9
+        }
+      }]
+    }, ()=> selectedZIPLayer.setMap(map));
+
+	});
+
+	//mouseout
+	// google.maps.event.addListener(layer, 'mouseout', function(fevt) {
+	// 	$("#info").html('<h2>Mouseout</h2>');
+	// });
+
+
+  //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
 
   function initAutocomplete() {
 
@@ -114,3 +153,5 @@ function initMap() {
   }
   initAutocomplete()
 }
+
+initMap()
