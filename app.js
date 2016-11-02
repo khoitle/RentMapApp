@@ -1,6 +1,5 @@
 var map;
 var layer;
-var selectedZIPLayer;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
@@ -44,7 +43,6 @@ function initMap() {
       }
     }]
   });
-  console.log(layer)
   layer.setMap(map);
   layer.enableMapTips({
     select: "'ZIP','Rent'", // list of columns to query, typially need only one column.
@@ -59,16 +57,11 @@ function initMap() {
     }
   });
 
-	google.maps.event.addListener(layer, 'click', function(fEvent) {
+  google.maps.event.addListener(layer, 'click', function(fEvent) {
     var ZIPVal = fEvent.row['ZIP'].value;
     var rentVal = fEvent.row['Rent'].value;
     console.log(ZIPVal, rentVal)
-	});
-
-	//mouseout
-	// google.maps.event.addListener(layer, 'mouseout', function(fevt) {
-	// 	$("#info").html('<h2>Mouseout</h2>');
-	// });
+  });
 
 
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
