@@ -43,4 +43,10 @@ function Router($stateProvider){
       controllerAs: "vm",
       templateUrl: "js/ng-views/map.html"
     })
+    .state("favorites", {
+      url: "/favorites",
+      controller: "FavoritesController",
+      controllerAs: "vm",
+      templateUrl: "js/ng-views/favorites.html"
+    })
 }
