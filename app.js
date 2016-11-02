@@ -12,7 +12,7 @@ function initMap() {
   infoWindow = new google.maps.InfoWindow();
   service = new google.maps.places.PlacesService(map);
 
-  map.addListener('click', performSearch);
+  // map.addListener('dblclick', performSearch);
 
   var layer = new google.maps.FusionTablesLayer({
     suppressInfoWindows: true,
@@ -51,7 +51,7 @@ function initMap() {
   });
   layer.setMap(map);
   layer.enableMapTips({
-    select: "'ZIP','Rent'", // list of columns to query, typially need only one column.
+    select: "'ZIP','Rent','latitude','longitude'", // list of columns to query, typially need only one column.
     from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al', // fusion table name
     geometryColumn: 'geometry', // geometry column name
     suppressMapTips: false, // optional, whether to show map tips. default false
@@ -66,8 +66,22 @@ function initMap() {
   google.maps.event.addListener(layer, 'click', function(fEvent) {
     var ZIPVal = fEvent.row['ZIP'].value;
     var rentVal = fEvent.row['Rent'].value;
-    console.log(ZIPVal, rentVal)
+    var lat = fEvent.row['latitude'].value;
+    var long = fEvent.row['longitude'].value;
+    var location = new google.maps.LatLng(lat,long)
+    console.log(lat)
+
+    var request = {
+        location: location,
+        radius: '1609',
+        types: ['store']
+      };
+      service.radarSearch(request, callback);
+
+
   });
+
+  // google.maps.event.addListener(layer, 'click', performSearch);
 
 
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////

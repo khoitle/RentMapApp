@@ -1,11 +1,13 @@
-function performSearch() {
+function performSearch(ZIPbound) {
+  var ZIPVal = ZIPbound.row['ZIP'].value;
   var request = {
-    bounds: map.getBounds(),
-    keyword: 'best view',
-    type: 'school'
+    location: ZIPVal,
+    radius: '1609'
   };
   service.radarSearch(request, callback);
 }
+
+// map.getBounds(),
 
 function callback(results, status) {
   if (status !== google.maps.places.PlacesServiceStatus.OK) {
