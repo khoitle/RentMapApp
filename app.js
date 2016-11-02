@@ -1,5 +1,4 @@
 var map;
-var regions;
 var layer;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -10,6 +9,7 @@ function initMap() {
     scaleControl: true
   });
   var layer = new google.maps.FusionTablesLayer({
+    suppressInfoWindows: true,
     query: {
       select: 'geometry',
       from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al'
@@ -44,6 +44,27 @@ function initMap() {
     }]
   });
   layer.setMap(map);
+  layer.enableMapTips({
+    select: "'ZIP','Rent'", // list of columns to query, typially need only one column.
+    from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al', // fusion table name
+    geometryColumn: 'geometry', // geometry column name
+    suppressMapTips: false, // optional, whether to show map tips. default false
+    delay: 100, // milliseconds mouse pause before send a server query. default 300.
+    tolerance: 8, // tolerance in pixel around mouse. default is 6.
+    googleApiKey: 'AIzaSyBNYErfLDCAvSnyYNvLIVMQWo45_L6zE1E',
+    htmlTemplate: function(rows) {
+      return '<b>ZIP: </b>' + rows[0][0] + '<br><b>Median Rent: </b>'+rows[0][1];
+    }
+  });
+
+  google.maps.event.addListener(layer, 'click', function(fEvent) {
+    var ZIPVal = fEvent.row['ZIP'].value;
+    var rentVal = fEvent.row['Rent'].value;
+    console.log(ZIPVal, rentVal)
+  });
+
+
+  //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
 
   function initAutocomplete() {
 
@@ -114,3 +135,5 @@ function initMap() {
   }
   initAutocomplete()
 }
+
+initMap()
