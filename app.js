@@ -8,6 +8,12 @@ function initMap() {
     mapTypeId: 'roadmap',
     scaleControl: true
   });
+
+  infoWindow = new google.maps.InfoWindow();
+  service = new google.maps.places.PlacesService(map);
+
+  map.addListener('click', performSearch);
+
   var layer = new google.maps.FusionTablesLayer({
     suppressInfoWindows: true,
     query: {
