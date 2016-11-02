@@ -68,13 +68,12 @@ html, body {
   width: 345px;
 }
 .favorites-page{
-  position: fixed;
   display: flex;
   border: 1px solid red;
   height: 90vh;
-  width: 700px;
-  left: 260px;
+  width: 1000px;
   padding-top: 10vh;
+  margin: auto;
 }
 .saved-place{
   height: 50px;
