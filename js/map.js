@@ -64,17 +64,17 @@ function initMap() {
   });
 
   google.maps.event.addListener(layer, 'click', function(fEvent) {
-    var ZIPVal = fEvent.row['ZIP'].value;
-    var rentVal = fEvent.row['Rent'].value;
-    var lat = fEvent.row['latitude'].value;
-    var long = fEvent.row['longitude'].value;
-    var areaName = fEvent.row['PONAME'].value;
-    var state = fEvent.row['STATE'].value;
-    var county = fEvent.row['county'].value;
-    var studioRent = fEvent.row['area_rent_br0'].value;
-    var oneBedRent = fEvent.row['area_rent_br1'].value;
-    var twoBedRent = fEvent.row['area_rent_br2'].value;
-    var threeBedRent = fEvent.row['area_rent_br3'].value;
+    ZIPVal = fEvent.row['ZIP'].value;
+    rentVal = fEvent.row['Rent'].value;
+    lat = fEvent.row['latitude'].value;
+    long = fEvent.row['longitude'].value;
+    areaName = fEvent.row['PONAME'].value;
+    state = fEvent.row['STATE'].value;
+    county = fEvent.row['county'].value;
+    studioRent = fEvent.row['area_rent_br0'].value;
+    oneBedRent = fEvent.row['area_rent_br1'].value;
+    twoBedRent = fEvent.row['area_rent_br2'].value;
+    threeBedRent = fEvent.row['area_rent_br3'].value;
     var location = new google.maps.LatLng(lat,long)
     console.log(ZIPVal, rentVal, lat, long, state, county, studioRent, oneBedRent, twoBedRent, threeBedRent)
 
@@ -94,7 +94,7 @@ function initMap() {
     //   };
     //   service.radarSearch(request, callback);
   });
-  
+
 
 
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
@@ -123,7 +123,7 @@ function initMap() {
     // more details for that place.
     searchBox.addListener('places_changed', function() {
       var places = searchBox.getPlaces();
-      
+
       if (places.length == 0) {
         return;
       }

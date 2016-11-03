@@ -11,6 +11,7 @@ angular
     HomeControllerFunction
   ])
   .controller("MapController", [
+    "FavoriteFactory",
     MapControllerFunction
   ])
   .controller("FavoritesController", [
@@ -27,48 +28,27 @@ function FavoriteFactoryFunction($resource) {
 }
 
 
-
 function HomeControllerFunction(){
 
 }
-function MapControllerFunction(){
-  this.filters = []
-  this.renderFilters = () => {
-    this.filters.forEach((filter) => {
-      var icon = 'null'
-      switch(filter) {
-        case 'restaurants':
-          icon = 'dining.png'
-          break;
-        case 'groceries':
-          icon = 'convenience.png'
-          break;
-        case 'gyms':
-          icon = 'cycling.png'
-          break;
-        case 'schools':
-          icon = 'ranger_station.png'
-          break;
-        case 'bars':
-          icon = 'bars.png'
-          break;
-      }
-      console.log(icon)
-    })
-  }
-  this.addFilter = (filter) => {
-    console.log(filter)
-    this.filters.push(filter)
-    this.renderFilters()
-  }
-  $(document).ready(() =>{
+
+function MapControllerFunction(FavoriteFactory){
+  $(document).ready(()=>{
     initMap()
     console.log('fire')
   })
+
+  this.create = function(){
+    this.favorite = new FavoriteFactory({name: areaName, state: state, zip: ZIPVal, rent: rentVal})
+    console.log(this.favorite)
+    this.favorite.$save()
+  }
 }
+
 function FavoritesControllerFunction( FavoriteFactory ){
   this.favorites = FavoriteFactory.query();
 }
+
 
 
 function Router($stateProvider){

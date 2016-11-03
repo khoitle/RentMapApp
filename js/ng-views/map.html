@@ -30,7 +30,7 @@
       <p><input ng-click="vm.addFilter('schools')" class="map-filter" type="checkbox" value="schools">Schools</p>
       <p><input ng-click="vm.addFilter('bars')" class="map-filter" type="checkbox" value="bars">Nightlife</p>
     </div>
-    <button type="button" class="favorite-button">Favorite Zip</button>
+    <button data-ng-click ="vm.create()" type="button" class="favorite-button">Favorite Zip</button>
   </div>
   <div id="map"></div>
 </div>
