@@ -45,8 +45,16 @@ function MapControllerFunction(FavoriteFactory){
   }
 }
 
-function FavoritesControllerFunction( FavoriteFactory ){
+function FavoritesControllerFunction(FavoriteFactory ){
   this.favorites = FavoriteFactory.query();
+  // console.log(this.favorites)
+
+  this.delete = function(favorite){
+    console.log(this.favorites)
+    console.log(favorite)
+    // this.favorites.$remove(favorite)
+    favorite.$remove({zip: favorite.zip})
+  }
 }
 
 

@@ -8,6 +8,7 @@
 <div class="favorites-page">
   <div class="saved-place" id="{{favorite.name}}" ng-repeat="favorite in vm.favorites">
     {{favorite.name}} {{favorite.state}} {{favorite.zip}} {{favorite.rent}}
+    <button data-ng-click="vm.delete(favorite)">Delete</button>
   </div>
 
 
