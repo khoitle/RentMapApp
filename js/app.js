@@ -16,6 +16,7 @@ angular
   ])
   .controller("FavoritesController", [
     "FavoriteFactory",
+    "$state",
     FavoritesControllerFunction
   ])
   .factory("FavoriteFactory", [
@@ -24,8 +25,10 @@ angular
   ])
 
 function FavoriteFactoryFunction($resource) {
-  return $resource("https://evening-woodland-89369.herokuapp.com/places/:zip.json")
+  return $resource("http://localhost:3000/places/:zip.json")
 }
+
+// "https://evening-woodland-89369.herokuapp.com/places/:zip.json"
 
 // "http://localhost:3000/places/:zip.json"
 
@@ -129,7 +132,7 @@ function MapControllerFunction(FavoriteFactory){
   }
 }
 
-function FavoritesControllerFunction(FavoriteFactory ){
+function FavoritesControllerFunction(FavoriteFactory, $state){
   this.favorites = FavoriteFactory.query();
   // console.log(this.favorites)
 
@@ -137,7 +140,10 @@ function FavoritesControllerFunction(FavoriteFactory ){
     console.log(this.favorites)
     console.log(favorite)
     // this.favorites.$remove(favorite)
-    favorite.$remove({zip: favorite.zip})
+    favorite.$remove({zip: favorite.zip}).then(function(){
+      $state.reload();
+    })
+
   }
 }
 
