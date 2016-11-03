@@ -88,8 +88,9 @@ html, body {
   font-family: 'Gloria Hallelujah', cursive;
   height: 50px;
   width: 800px;
-  /*border: 1px solid #E3E3E3;*/
-  /*box-shadow: 0 4px 2px 2px gray;*/
+  border: 1px solid #E3E3E3;
+  border-radius: 5px;
+  box-shadow: 0 4px 2px 2px gray;
   text-align: center;
 }
 #Washington{
@@ -121,11 +122,6 @@ li{
 a {
   text-decoration: none;
   color: white;
-}
-.myPlaces{
-  border: 1px solid #E3E3E3;
-  height: 90vh;
-  width: 300px;
 }
 .location-details {
   height: 150px;
@@ -168,13 +164,15 @@ h3{
   font-size: 120px;
   color: #E1E1E3;
 }
-.consoleHeader, .checkbox{
+.consoleHeader, .checkbox, .zip-code, .area-name, .county-state-name, .avg-family-rent,
+.avg-studio-rent, .avg-onebed-rent, .avg-twobed-rent, .avg-threebed-rent
+{
   font-family: 'Gloria Hallelujah', cursive;
 }
 .consoleHeader{
   font-size: 20px;
 }
-.map-filter{
+.checkbox{
   font-size: 12px;
 }
 .favorite-button {

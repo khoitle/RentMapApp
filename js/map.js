@@ -1,5 +1,7 @@
 var map;
 var layer;
+var searchLocation;
+var markersArray = []
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
@@ -64,6 +66,7 @@ function initMap() {
   });
 
   google.maps.event.addListener(layer, 'click', function(fEvent) {
+
     ZIPVal = fEvent.row['ZIP'].value;
     rentVal = fEvent.row['Rent'].value;
     lat = fEvent.row['latitude'].value;
@@ -75,7 +78,8 @@ function initMap() {
     oneBedRent = fEvent.row['area_rent_br1'].value;
     twoBedRent = fEvent.row['area_rent_br2'].value;
     threeBedRent = fEvent.row['area_rent_br3'].value;
-    var location = new google.maps.LatLng(lat,long)
+    searchLocation = new google.maps.LatLng(lat,long)
+
     console.log(ZIPVal, rentVal, lat, long, state, county, studioRent, oneBedRent, twoBedRent, threeBedRent)
 
     $('.zip-code').text(ZIPVal)
