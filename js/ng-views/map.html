@@ -23,12 +23,12 @@
       <p class="avg-threebed-rent"></p>
     </div>
     <div class="filter-option">
-      <h2 class="consoleHeader">View Nearby:</h2>
-      <p class="checkbox"><input ng-click="vm.addFilter('restaurants')" class="map-filter" type="checkbox" value="restaurants">Restaurants</p>
-      <p class="checkbox"><input ng-click="vm.addFilter('groceries')" class="map-filter" type="checkbox" value="groceries">Grocery Stores</p>
-      <p class="checkbox"><input ng-click="vm.addFilter('gyms')" class="map-filter" type="checkbox" value="gyms">Gyms</p>
-      <p class="checkbox"><input ng-click="vm.addFilter('schools')" class="map-filter" type="checkbox" value="schools">Schools</p>
-      <p class="checkbox"><input ng-click="vm.addFilter('bars')" class="map-filter" type="checkbox" value="bars">Nightlife</p>
+      <h2>View Nearby:</h2>
+      <p class="checkbox"><input ng-click="vm.addFilter('restaurant')" class="map-filter restaurant" ng-model="vm.activeFilters.restaurant" type="checkbox">Restaurants</p>
+      <p class="checkbox"><input ng-click="vm.addFilter('grocery_or_supermarket')" ng-model="vm.activeFilters.grocery_or_supermarket" class="map-filter grocery_or_supermarket" type="checkbox">Grocery Stores</p>
+      <p class="checkbox"><input ng-click="vm.addFilter('gym')" class="map-filter gym" ng-model="vm.activeFilters.gym" type="checkbox">Gyms</p>
+      <p class="checkbox"><input ng-click="vm.addFilter('school')" class="map-filter school" ng-model="vm.activeFilters.school" type="checkbox">Schools</p>
+      <p class="checkbox"><input ng-click="vm.addFilter('bar')" class="map-filter bar" ng-model="vm.activeFilters.bar" type="checkbox">Nightlife</p>
     </div>
     <button type="button" class="favorite-button">Favorite Zip</button>
   </div>

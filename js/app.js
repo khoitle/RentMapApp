@@ -33,32 +33,85 @@ function HomeControllerFunction(){
 }
 function MapControllerFunction(){
   this.filters = []
+  this.activeFilters = {
+    restaurant: false,
+    grocery_or_supermarket: false,
+    gym: false,
+    school: false,
+    bar: false,
+  }
   this.renderFilters = () => {
+  markersArray.forEach((marker) => {
+    marker.setMap(null)
+  })
     this.filters.forEach((filter) => {
       var icon = 'null'
       switch(filter) {
-        case 'restaurants':
+        case 'restaurant':
           icon = 'dining.png'
           break;
-        case 'groceries':
+        case 'grocery_or_supermarket':
           icon = 'convenience.png'
           break;
-        case 'gyms':
+        case 'gym':
           icon = 'cycling.png'
           break;
-        case 'schools':
+        case 'school':
           icon = 'ranger_station.png'
           break;
-        case 'bars':
+        case 'bar':
           icon = 'bars.png'
           break;
       }
       console.log(icon)
+      var request = {
+          location: searchLocation,
+          radius: '1609',
+          type: [filter]
+        };
+      service.radarSearch(request, callback);
+      function callback(results, status) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          console.error(status);
+          return;
+        }
+        for (var i = 0, result; result = results[i]; i++) {
+          addMarker(result);
+        }
+      }
+      function addMarker(place) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location,
+          icon: {
+            url: `http://maps.google.com/mapfiles/kml/shapes/${icon}`,
+            anchor: new google.maps.Point(10, 10),
+            scaledSize: new google.maps.Size(10, 17)
+          }
+        });
+        markersArray.push(marker)
+        google.maps.event.addListener(marker, 'click', function() {
+          service.getDetails(place, function(result, status) {
+            if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              console.error(status);
+              return;
+            }
+            infoWindow.setContent(result.name);
+            infoWindow.open(map, marker);
+          });
+        });
+      }
+
     })
   }
   this.addFilter = (filter) => {
-    console.log(filter)
-    this.filters.push(filter)
+    this.filters = []
+    for(key in this.activeFilters){
+      if(this.activeFilters[key]){
+        this.filters.push(key)
+      }
+    }
+    console.log(this.activeFilters)
     this.renderFilters()
   }
   $(document).ready(() =>{
