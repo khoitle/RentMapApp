@@ -8,22 +8,22 @@
 <input type="text" class="controls" id="pac-input">
 <div class="container">
   <div class="console">
+    <h2 class="consoleHeader">Location:</h2>
     <div class="location-details">
-      <h2 class="consoleHeader">Location</h2>
       <p class="zip-code"></p>
       <p class="area-name"></p>
       <p class="county-state-name"></p>
     </div>
+    <h2 class="consoleHeader">Rent Details:</h2>
     <div class="rent-details">
-      <h2 class="consoleHeader">Rent Details</h2>
       <p class="avg-family-rent"></p>
       <p class="avg-studio-rent"></p>
       <p class="avg-onebed-rent"></p>
       <p class="avg-twobed-rent"></p>
       <p class="avg-threebed-rent"></p>
     </div>
+    <h2 class="consoleHeader">View Nearby:</h2>
     <div class="filter-option">
-      <h2>View Nearby:</h2>
       <p class="checkbox"><input ng-click="vm.addFilter('restaurant')" class="map-filter restaurant" ng-model="vm.activeFilters.restaurant" type="checkbox">Restaurants</p>
       <p class="checkbox"><input ng-click="vm.addFilter('grocery_or_supermarket')" ng-model="vm.activeFilters.grocery_or_supermarket" class="map-filter grocery_or_supermarket" type="checkbox">Grocery Stores</p>
       <p class="checkbox"><input ng-click="vm.addFilter('gym')" class="map-filter gym" ng-model="vm.activeFilters.gym" type="checkbox">Gyms</p>

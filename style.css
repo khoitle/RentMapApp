@@ -123,14 +123,18 @@ a {
   text-decoration: none;
   color: white;
 }
+.console > div {
+  overflow-y: scroll;
+}
 .location-details {
-  height: 150px;
+  height: 100px;
 }
 .rent-details {
   height: 200px;
 }
 .console p {
-  margin: 10px 0;
+  margin: 5px 0;
+  font-size: 0.8em;
 }
 .favorite-button {
   width: 200px;
@@ -171,6 +175,7 @@ h3{
 }
 .consoleHeader{
   font-size: 20px;
+  margin: 0;
 }
 .checkbox{
   font-size: 12px;
