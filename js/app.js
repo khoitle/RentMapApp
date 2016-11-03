@@ -32,7 +32,36 @@ function HomeControllerFunction(){
 
 }
 function MapControllerFunction(){
-  $(document).ready(()=>{
+  this.filters = []
+  this.renderFilters = () => {
+    this.filters.forEach((filter) => {
+      var icon = 'null'
+      switch(filter) {
+        case 'restaurants':
+          icon = 'dining.png'
+          break;
+        case 'groceries':
+          icon = 'convenience.png'
+          break;
+        case 'gyms':
+          icon = 'cycling.png'
+          break;
+        case 'schools':
+          icon = 'ranger_station.png'
+          break;
+        case 'bars':
+          icon = 'bars.png'
+          break;
+      }
+      console.log(icon)
+    })
+  }
+  this.addFilter = (filter) => {
+    console.log(filter)
+    this.filters.push(filter)
+    this.renderFilters()
+  }
+  $(document).ready(() =>{
     initMap()
     console.log('fire')
   })
@@ -40,6 +69,7 @@ function MapControllerFunction(){
 function FavoritesControllerFunction( FavoriteFactory ){
   this.favorites = FavoriteFactory.query();
 }
+
 
 function Router($stateProvider){
   $stateProvider

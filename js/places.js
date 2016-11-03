@@ -1,11 +1,11 @@
-function performSearch(ZIPbound) {
-  var ZIPVal = ZIPbound.row['ZIP'].value;
-  var request = {
-    location: ZIPVal,
-    radius: '1609'
-  };
-  service.radarSearch(request, callback);
-}
+// function performSearch(ZIPbound) {
+//   var ZIPVal = ZIPbound.row['ZIP'].value;
+//   var request = {
+//     location: ZIPVal,
+//     radius: '1609'
+//   };
+//   service.radarSearch(request, callback);
+// }
 
 // map.getBounds(),
 

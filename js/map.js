@@ -87,17 +87,14 @@ function initMap() {
     $('.avg-twobed-rent').text('Average Two Bedroom: '+twoBedRent)
     $('.avg-threebed-rent').text('Average Three Bedroom: '+threeBedRent)
 
-    var request = {
-        location: location,
-        radius: '1609',
-        types: ['store']
-      };
-      service.radarSearch(request, callback);
-
-
+    // var request = {
+    //     location: location,
+    //     radius: '1609',
+    //     types: ['store']
+    //   };
+    //   service.radarSearch(request, callback);
   });
-
-  // google.maps.event.addListener(layer, 'click', performSearch);
+  
 
 
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
