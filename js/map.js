@@ -80,7 +80,7 @@ function initMap() {
 
     $('.zip-code').text(ZIPVal)
     $('.area-name').text(areaName)
-    $('.county-state-name').text(county+' '+state)
+    $('.county-state-name').text(county+', '+state)
     $('.avg-family-rent').text('Average Family Residence: '+rentVal)
     $('.avg-studio-rent').text('Average Studio: '+studioRent)
     $('.avg-onebed-rent').text('Average One Bedroom: '+oneBedRent)
@@ -148,7 +148,7 @@ function initMap() {
           size: new google.maps.Size(71, 71),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
+          scaledSize: new google.maps.Size(25, 25),
         };
 
         // Create a marker for each place.
