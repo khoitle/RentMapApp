@@ -1,5 +1,7 @@
 var map;
 var layer;
+var searchLocation;
+var markersArray = []
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
@@ -75,7 +77,7 @@ function initMap() {
     var oneBedRent = fEvent.row['area_rent_br1'].value;
     var twoBedRent = fEvent.row['area_rent_br2'].value;
     var threeBedRent = fEvent.row['area_rent_br3'].value;
-    var location = new google.maps.LatLng(lat,long)
+    searchLocation = new google.maps.LatLng(lat,long)
     console.log(ZIPVal, rentVal, lat, long, state, county, studioRent, oneBedRent, twoBedRent, threeBedRent)
 
     $('.zip-code').text(ZIPVal)
@@ -94,7 +96,7 @@ function initMap() {
     //   };
     //   service.radarSearch(request, callback);
   });
-  
+
 
 
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
@@ -123,7 +125,7 @@ function initMap() {
     // more details for that place.
     searchBox.addListener('places_changed', function() {
       var places = searchBox.getPlaces();
-      
+
       if (places.length == 0) {
         return;
       }
