@@ -3,20 +3,19 @@
     <li><a ui-sref="home">Home | </a></li>
     <li><a ui-sref="map"> Map | </a></li>
     <li><a ui-sref="favorites"> My Places</a></li>
-    <li><a href="" ng-click="myPlaces = !myPlaces">| Information</a></li>
   </ul>
 </nav>
 <input type="text" class="controls" id="pac-input">
 <div class="container">
   <div class="console">
     <div class="location-details">
-      <h2>Location</h2>
+      <h2 class="consoleHeader">Location</h2>
       <p class="zip-code"></p>
       <p class="area-name"></p>
       <p class="county-state-name"></p>
     </div>
     <div class="rent-details">
-      <h2>Rent Details</h2>
+      <h2 class="consoleHeader">Rent Details</h2>
       <p class="avg-family-rent"></p>
       <p class="avg-studio-rent"></p>
       <p class="avg-onebed-rent"></p>
@@ -24,14 +23,14 @@
       <p class="avg-threebed-rent"></p>
     </div>
     <div class="filter-option">
-      <h2>View Nearby:</h2>
-      <p><input type="checkbox" value="restaurants">Restaurants</p>
-      <p><input type="checkbox" value="groceries">Grocery Stores</p>
-      <p><input type="checkbox" value="gyms">Gyms</p>
-      <p><input type="checkbox" value="schools">Schools</p>
-      <p><input type="checkbox" value="bars">Nightlife</p>
+      <h2 class="consoleHeader">View Nearby:</h2>
+      <p class="checkbox"><input type="checkbox" value="restaurants">Restaurants</p>
+      <p class="checkbox"><input type="checkbox" value="groceries">Grocery Stores</p>
+      <p class="checkbox"><input type="checkbox" value="gyms">Gyms</p>
+      <p class="checkbox"><input type="checkbox" value="schools">Schools</p>
+      <p class="checkbox"><input type="checkbox" value="bars">Nightlife</p>
     </div>
-    <button type="button" class="favorite-button">Favorite ZIP</button>
+    <button type="button" class="favorite-button">Favorite Zip</button>
   </div>
   <div id="map"></div>
 </div>

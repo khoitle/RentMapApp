@@ -76,7 +76,7 @@ html, body {
 }
 .favorites-page{
   display: flex;
-  border: 3px solid #E3E3E3;
+  border: 3px solid #E1E1E3;
   height: 90vh;
   width: 1000px;
   padding-top: 10vh;
@@ -157,7 +157,42 @@ a {
 }
 #logo{
   position: relative;
-  top: 50px;
-  left: 50px;
-
+  top: 240px;
+  left: 950px
+}
+h3{
+  position: fixed;
+  top: 30px;
+  left: 360px;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 120px;
+  color: #E1E1E3;
+}
+.consoleHeader, .checkbox{
+  font-family: 'Gloria Hallelujah', cursive;
+}
+.consoleHeader{
+  font-size: 20px;
+}
+.checkbox{
+  font-size: 12px;
+}
+.favorite-button {
+   background-color:  #3E7CC3;
+   border-radius: 28px;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 13px;
+   font-family: 'Gloria Hallelujah', cursive;
+   text-decoration: none;
+   text-align: center;
+}
+.favorite-button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+}
+.favorite-button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
 }
