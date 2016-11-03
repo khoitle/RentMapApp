@@ -18,7 +18,7 @@ function initMap() {
     suppressInfoWindows: true,
     query: {
       select: 'geometry',
-      from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al'
+      from: '1TRzyT7nhZ_JcJl6-PKop4UBLqz9FzArfNQ0W3tgX'
     },
     styles: [{
       polygonOptions: {
@@ -51,8 +51,8 @@ function initMap() {
   });
   layer.setMap(map);
   layer.enableMapTips({
-    select: "'ZIP','Rent','latitude','longitude'", // list of columns to query, typially need only one column.
-    from: '1oUHvuUMkzN23i9l59qfpJfUhltfH5cpPdNasx6Al', // fusion table name
+    select: "'ZIP','Rent','latitude','longitude','PONAME','STATE','county','area_rent_br0','area_rent_br1','area_rent_br2','area_rent_br3'", // list of columns to query, typially need only one column.
+    from: '1TRzyT7nhZ_JcJl6-PKop4UBLqz9FzArfNQ0W3tgX', // fusion table name
     geometryColumn: 'geometry', // geometry column name
     suppressMapTips: false, // optional, whether to show map tips. default false
     delay: 100, // milliseconds mouse pause before send a server query. default 300.
@@ -68,8 +68,24 @@ function initMap() {
     var rentVal = fEvent.row['Rent'].value;
     var lat = fEvent.row['latitude'].value;
     var long = fEvent.row['longitude'].value;
+    var areaName = fEvent.row['PONAME'].value;
+    var state = fEvent.row['STATE'].value;
+    var county = fEvent.row['county'].value;
+    var studioRent = fEvent.row['area_rent_br0'].value;
+    var oneBedRent = fEvent.row['area_rent_br1'].value;
+    var twoBedRent = fEvent.row['area_rent_br2'].value;
+    var threeBedRent = fEvent.row['area_rent_br3'].value;
     var location = new google.maps.LatLng(lat,long)
-    console.log(lat)
+    console.log(ZIPVal, rentVal, lat, long, state, county, studioRent, oneBedRent, twoBedRent, threeBedRent)
+
+    $('.zip-code').text(ZIPVal)
+    $('.area-name').text(areaName)
+    $('.county-state-name').text(county+', '+state)
+    $('.avg-family-rent').text('Average Family Residence: '+rentVal)
+    $('.avg-studio-rent').text('Average Studio: '+studioRent)
+    $('.avg-onebed-rent').text('Average One Bedroom: '+oneBedRent)
+    $('.avg-twobed-rent').text('Average Two Bedroom: '+twoBedRent)
+    $('.avg-threebed-rent').text('Average Three Bedroom: '+threeBedRent)
 
     var request = {
         location: location,
