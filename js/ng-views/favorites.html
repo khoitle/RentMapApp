@@ -7,8 +7,8 @@
   </ul>
 </nav>
 <div class="favorites-page">
-  <div class="saved-place" ng-repeat="favorite in vm.favorites">
-    {{favorite.name}}
+  <div class="saved-place" id="{{favorite.name}}" ng-repeat="favorite in vm.favorites">
+    {{favorite.name}} {{favorite.state}} {{favorite.zip}} {{favorite.rent}}
   </div>
 
 

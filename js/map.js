@@ -95,6 +95,7 @@ function initMap() {
     //   mapTypeId: 'roadmap'
     // });
     // Create the search box and link it to the UI element.
+
     var input = document.getElementById('pac-input');
     console.log(input)
     var searchBox = new google.maps.places.SearchBox(input);
@@ -128,11 +129,12 @@ function initMap() {
           return;
         }
         var icon = {
+
           url: place.icon,
           size: new google.maps.Size(71, 71),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
+          scaledSize: new google.maps.Size(25, 25),
         };
 
         // Create a marker for each place.
@@ -140,7 +142,8 @@ function initMap() {
           map: map,
           icon: icon,
           title: place.name,
-          position: place.geometry.location
+          position: place.geometry.location,
+          zoom: 20
         }));
 
         if (place.geometry.viewport) {
