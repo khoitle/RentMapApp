@@ -1,3 +1,5 @@
+// NHO: reminder to remove unused / commented out code
+
 // // function performSearch(ZIPbound) {
 // //   var ZIPVal = ZIPbound.row['ZIP'].value;
 // //   var request = {

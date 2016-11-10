@@ -28,16 +28,20 @@ function FavoriteFactoryFunction($resource) {
   return $resource("https://evening-woodland-89369.herokuapp.com/places/:zip.json")
 }
 
+// NHO: reminder to remove unused / commented out code
 // "https://evening-woodland-89369.herokuapp.com/places/:zip.json"
 
 // "http://localhost:3000/places/:zip.json"
 
 
 function HomeControllerFunction(){
-
+  // NHO: is this doing anything? if its just a static page you probably do not need a controller...
 }
 
 function MapControllerFunction(FavoriteFactory){
+  // NHO: this controller is really bloated, especially with a lot of third-party code
+  // is there any way to abstract this into different files?
+  // NHO: could also move your data fetching logic to a custom service
   this.filters = []
   this.activeFilters = {
     restaurant: false,
@@ -47,11 +51,12 @@ function MapControllerFunction(FavoriteFactory){
     bar: false,
   }
   this.renderFilters = () => {
-  markersArray.forEach((marker) => {
-    marker.setMap(null)
-  })
+    markersArray.forEach((marker) => {
+      marker.setMap(null)
+    })
     this.filters.forEach((filter) => {
       var icon = 'null'
+      // NHO: could use an object to map name of filters to images to reduce this code!
       switch(filter) {
         case 'restaurant':
           icon = 'dining.png'
@@ -68,7 +73,9 @@ function MapControllerFunction(FavoriteFactory){
         case 'bar':
           icon = 'bars.png'
           break;
+        // NHO: might recommend setting a default for this switch statemet
       }
+      // NHO: feel like we could move this code to map.js or some other utility file
       console.log(icon)
       var request = {
           location: searchLocation,
@@ -99,6 +106,7 @@ function MapControllerFunction(FavoriteFactory){
         google.maps.event.addListener(marker, 'click', function() {
           service.getDetails(place, function(result, status) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
+              // NHO: might want to display to user some notification, like "No Results Found" etc...
               console.error(status);
               return;
             }
@@ -120,12 +128,14 @@ function MapControllerFunction(FavoriteFactory){
     console.log(this.activeFilters)
     this.renderFilters()
   }
+  // NHO: this works but would recommend doing this the "angular" way utilizing `ng-init`
   $(document).ready(() =>{
     initMap()
     console.log('fire')
   })
 
   this.create = function(){
+    // NHO: where are areaName, state, ZIPVal, and rentVal defined?
     this.favorite = new FavoriteFactory({name: areaName, state: state, zip: ZIPVal, rent: rentVal})
     console.log(this.favorite)
     this.favorite.$save()
@@ -137,11 +147,13 @@ function FavoritesControllerFunction(FavoriteFactory, $state){
   // console.log(this.favorites)
 
   this.delete = function(favorite){
+    // NHO: these console.logs are fine for during the development phase
+    // but would remove them during production / before you show code to potential employers
     console.log(this.favorites)
     console.log(favorite)
     // this.favorites.$remove(favorite)
     favorite.$remove({zip: favorite.zip}).then(function(){
-      $state.reload();
+      $state.reload(); // NHO: nice!
     })
 
   }
