@@ -66,6 +66,8 @@ function initMap() {
   });
 
   google.maps.event.addListener(layer, 'click', function(fEvent) {
+    // NHO: one idea might be to update the browser's location so that the user could share / deep link
+    // to a particular ZIP / see all associated data
 
     ZIPVal = fEvent.row['ZIP'].value;
     rentVal = fEvent.row['Rent'].value;
@@ -82,6 +84,7 @@ function initMap() {
 
     console.log(ZIPVal, rentVal, lat, long, state, county, studioRent, oneBedRent, twoBedRent, threeBedRent)
 
+    // NHO: is there any way to pass this data to view with Angular?
     $('.zip-code').text(ZIPVal)
     $('.area-name').text(areaName)
     $('.county-state-name').text(county+', '+state)
@@ -104,6 +107,8 @@ function initMap() {
   //SEARCH FEATURE/////////////////////////////////////////////////////////////////////////////
 
   function initAutocomplete() {
+
+    // NHO: reminder to remove commented out / unused code!
 
     // var map = new google.maps.Map(document.getElementById('map'), {
     //   center: {lat: 38.9072, lng: -77.0369},
@@ -154,6 +159,7 @@ function initMap() {
           scaledSize: new google.maps.Size(25, 25),
         };
 
+        // NHO: is there anyway to reusue the addMarker function defined in the mapController?
         // Create a marker for each place.
         markers.push(new google.maps.Marker({
           map: map,
